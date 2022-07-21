@@ -1,0 +1,10 @@
+.common-question{
+    background: url('../../images/ajscb1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.common-question-banner{
+    background: #0052cc;
+    mix-blend-mode: overlay;
+}

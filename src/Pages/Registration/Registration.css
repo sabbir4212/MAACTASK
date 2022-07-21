@@ -1,0 +1,20 @@
+.registration-banner{
+    background: url('../../images/blue-abstract-layered-stripes-background2.png');
+}
+.registration-form{
+    background: #fff;
+    padding: 50px;
+    width: 500px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-radius: 3px;
+}
+.registration-inputs{
+    width: 100%;
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+.registration-inputs:focus{
+    outline: none;
+}
