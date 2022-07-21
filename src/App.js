@@ -1,11 +1,11 @@
 import './App.css';
-import Footer from './Pages/Footer/Footer';
+import Home from './Pages/Home/Home';
 
 
 function App() {
   return (
     <div>
-      <Footer></Footer>
+      <Home></Home>
     </div>
   );
 }
