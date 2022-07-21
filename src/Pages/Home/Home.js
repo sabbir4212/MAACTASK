@@ -1,5 +1,6 @@
 import React from 'react';
 import AboutUs from '../AboutUs/AboutUs';
+import Banner from '../Banner/Banner';
 import CommonQuestion from '../CommonQuestion/CommonQuestion';
 import Footer from '../Footer/Footer';
 import ProductFeatures from '../ProductFeatures/ProductFeatures';
@@ -9,6 +10,7 @@ import './Home.css';
 const Home = () => {
     return (
         <div>
+            <Banner></Banner>
             <CommonQuestion></CommonQuestion>
             <ProductFeatures></ProductFeatures>
             <AboutUs></AboutUs>
