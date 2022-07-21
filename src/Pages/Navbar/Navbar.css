@@ -1,5 +1,11 @@
+.navbar-banner{
+    background: url('../../images/blue-abstract-layered-stripes-background2.png');
+    height: 700px;
+    margin-bottom: 370px;
+}
 .navbar{
-    border-bottom: 1ps solid #0052cc;
+    border-bottom: 1px solid #0052cc;
+    background: transparent;
 }
 .login-btn {
   padding: 10px 20px;
@@ -22,4 +28,8 @@
 }
 .registration:hover {
   box-shadow: 3px 2px 3px 0px #0052cc;
+}
+.request-demo{
+    height: 500px;
+    margin-bottom: 400px;
 }
