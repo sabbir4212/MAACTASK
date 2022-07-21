@@ -1,0 +1,27 @@
+.footer{
+    background: #00193D;
+    padding: 20px;
+}
+.social-login{
+    border-bottom: 1px solid #0D3166;
+}
+.social-login img{
+    width: 100px;
+}
+.social-login p{
+    font-size: 16px;
+}
+.social-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.social-group span{
+    margin: 15px;
+    font-size: 25px;
+    color: #00193D;
+    padding: 10px;
+    border-radius: 50%;
+    background: #fff;
+}
