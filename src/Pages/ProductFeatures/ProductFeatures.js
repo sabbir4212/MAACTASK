@@ -5,7 +5,7 @@ import controlPhnImg from "../../images/phngroupbg.png";
 
 const ProductFeatures = () => {
   return (
-    <div className="product-features grid items-center justify-center">
+    <div className="product-features grid items-center justify-center mb-20">
       <div className="top-text">
         <p className="text-lg mt-5 text-[#0052CC] text-center font-bold">
           Products Features
