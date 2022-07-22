@@ -6,9 +6,9 @@ const DashboardFooter = () => {
         <div className='dashboard-footer flex items-center justify-between text-sm p-5 bg-slate-200'>
             <p>2022 &copy; MAAC</p>
             <div className='flex'>
-                <p>Contact Us</p>
-                <p>Privacy Policy</p>
-                <p>Terms & Condition</p>
+                <p className='mx-3 cursor-pointer'>Contact Us</p>
+                <p className='mx-3 cursor-pointer'>Privacy Policy</p>
+                <p className='ml-3 cursor-pointer'>Terms & Condition</p>
             </div>
         </div>
     );

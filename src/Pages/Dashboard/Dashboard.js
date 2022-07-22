@@ -3,6 +3,7 @@ import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import "./Dashboard.css";
 import { GrLocation } from "react-icons/gr";
 import DashboardFooter from "../DashboardFooter/DashboardFooter";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -15,19 +16,18 @@ const Dashboard = () => {
             <GrLocation className="text-lg font-light"></GrLocation>
             <span className="ml-3">Geo Information</span>
           </p>
-          <div className=" grid">
-            <button
-              className="text-sm mt-5 text-blue-500"
-              style={{ borderRight: "5px solid blue" }}
+          <div className=" grid ml-7">
+            <NavLink to="/dashboard"
+              className="text-sm mt-5"
             >
               Region
-            </button>
-            <button className="text-sm mt-5">Area</button>
+            </NavLink>
+            <NavLink to={"/dashboard/regioncreate"} className="text-sm mt-5">Area</NavLink>
           </div>
         </div>
         <div className="w-[85%] bg-slate-100">
-          <div className="h-[80vh]">
-            <p>dashboard</p>
+          <div className="">
+            <Outlet></Outlet>
           </div>
           <div>
             <DashboardFooter></DashboardFooter>
