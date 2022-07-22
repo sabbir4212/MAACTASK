@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AreaCreate from './Pages/AreaCreate/AreaCreate';
+import AreaList from './Pages/AreaList/AreaList';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
@@ -18,6 +20,8 @@ function App() {
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>
           <Route index element={<RegionList></RegionList>}></Route>
           <Route path='regioncreate' element={<RegionCreate></RegionCreate>}></Route>
+          <Route path='arealist' element={<AreaList></AreaList>}></Route>
+          <Route path='areacreate' element={<AreaCreate></AreaCreate>}></Route>
         </Route>
       </Routes>
     </div>

@@ -22,7 +22,7 @@ const Dashboard = () => {
             >
               Region
             </NavLink>
-            <NavLink to={"/dashboard/regioncreate"} className="text-sm mt-5">Area</NavLink>
+            <NavLink to={"/dashboard/arealist"} className="text-sm mt-5">Area</NavLink>
           </div>
         </div>
         <div className="w-[85%] bg-slate-100">

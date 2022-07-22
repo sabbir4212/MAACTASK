@@ -1,15 +1,15 @@
-import React from 'react';
-import './RegionCreate.css';
+import React from "react";
+import "./AreaCreate.css";
 import { AiFillLeftCircle, AiOutlineDoubleRight } from "react-icons/ai";
 
-const RegionCreate = () => {
-    const handleCreateArea = (event) => {
-        event.preventDefault();
-        console.log(event.target.regionToAddRegion.value)
-        console.log(event.target.areaToAddRegion.value)
-      };
-    return (
-        <div className="region-list">
+const AreaCreate = () => {
+  const handleCreateArea = (event) => {
+    event.preventDefault();
+    console.log(event.target.regionToAddRegion.value)
+    console.log(event.target.areaToAddRegion.value)
+  };
+  return (
+    <div className="region-list">
       <div className="flex items-center justify-between mt-4">
         <div>
           <button className="text-2xl cursor-pointer">
@@ -36,15 +36,18 @@ const RegionCreate = () => {
         >
           <label className="text-sm mb-2" htmlFor="regionToAddRegion">Region</label>
           <input className="area-create-input" type="text" placeholder="Type region" name="regionToAddRegion" required/>
+
+          <label className="text-sm mb-2 mt-5" htmlFor="areaToAddRegion">Area</label>
+          <input className="area-create-input" type="text" placeholder="Type area" name="areaToAddRegion" required/>
           <input
             className="py-2 w-[200px] cursor-pointer mt-3 px-3 rounded text-white bg-[#0B2E4E] "
             type="submit"
-            value="Add Region"
+            value="Add Area"
           />
         </form>
       </div>
     </div>
-    );
+  );
 };
 
-export default RegionCreate;
+export default AreaCreate;
