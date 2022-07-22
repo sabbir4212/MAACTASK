@@ -25,15 +25,73 @@ const RegionList = () => {
             <span className="text-[#0055CC]">Geo List</span>
           </p>
         </div>
-        <Link to={"/dashboard/regioncreate"} className="flex items-center px-3 py-2 mr-4 rounded bg-[#0B2E4E] text-white">
+        <Link
+          to={"/dashboard/regioncreate"}
+          className="flex items-center px-3 py-2 mr-4 rounded bg-[#0B2E4E] text-white"
+        >
           <AiOutlinePlus></AiOutlinePlus> Create New
         </Link>
-      </div> 
+      </div>
       <div className="m-5 rounded grid items-center justify-center bg-white py-16 mb-5">
-        <div className="grid">
-        <img className="mx-auto" src={underLoadImg} alt="" />
-        <p className="w-3/5 mt-4 mx-auto tracking-wider text-center px-2">Currently you have no Data. For next step first <Link to={"/dashboard/regioncreate"} className="text-[#0055cc] cursor-pointer">Create Region</Link></p>
+        {/* <div className="grid">
+          <img className="mx-auto" src={underLoadImg} alt="" />
+          <p className="w-3/5 mt-4 mx-auto tracking-wider text-center px-2">
+            Currently you have no Data. For next step first{" "}
+            <Link
+              to={"/dashboard/regioncreate"}
+              className="text-[#0055cc] cursor-pointer"
+            >
+              Create Region
+            </Link>
+          </p>
+        </div> */}
+
+
+<div className="overflow-y-scroll h-[40vh]">
+        <div class="Table">
+          <div class="Table-row Table-header">
+            <div class="Table-row-item w-14">
+              <input type="checkbox" name="" id="" />
+            </div>
+            <div class="Table-row-item w-48">Sl. No.</div>
+            <div class="Table-row-item w-48">Region</div>
+          </div>
+          <div class="Table-row">
+            <div class="Table-row-item w-14" data-header="Header1">
+              <input type="checkbox" name="" id="" />
+            </div>
+            <div class="Table-row-item w-48" data-header="Header2">
+              1
+            </div>
+            <div class="Table-row-item w-48" data-header="Header3">
+            Dhaka
+            </div>
+          </div>
+          <div class="Table-row">
+            <div class="Table-row-item w-14" data-header="Header1">
+              <input type="checkbox" name="" id="" />
+            </div>
+            <div class="Table-row-item w-48" data-header="Header2">
+              2
+            </div>
+            <div class="Table-row-item w-48" data-header="Header3">
+            CTG
+            </div>
+          </div>
+          <div class="Table-row">
+            <div class="Table-row-item w-14" data-header="Header1">
+              <input type="checkbox" name="" id="" />
+            </div>
+            <div class="Table-row-item w-48" data-header="Header2">
+              3
+            </div>
+            <div class="Table-row-item w-48" data-header="Header3">
+            Dhaka
+            </div>
+          </div>
         </div>
+        </div>
+
       </div>
     </div>
   );

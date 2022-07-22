@@ -2,3 +2,39 @@
     margin-left: -13px;
     font-size: 28px;
 }
+
+.Table {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 900px;
+  }
+  .Table-header {
+    display: none;
+  }
+  .Table-row {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+  .Table-row-item {
+    display: flex;
+    padding: 15px 20px;
+  }
+  
+  
+  @media (min-width: 500px) {
+    .Table-header {
+      background: rgba(221, 221, 221, 0.596);
+    }
+    .Table-row {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+  
+    .Table-row-item:before {
+      content: none;
+    }
+  }
+  
