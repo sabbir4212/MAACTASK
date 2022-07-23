@@ -1,10 +1,13 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const ProtectedRoute = ({children}) => {
-    
-    const location = useLocation()
-    return 
+
+    const location = useLocation();
+    if(!user){
+        return <Navigate to={`/login`} state={{from: location}} replace></Navigate>
+    }
+    return children 
 };
 
 export default ProtectedRoute;

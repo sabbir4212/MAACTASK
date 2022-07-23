@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import Loading from "../Loading/Loading";
 import Navbar from "../Navbar/Navbar";
 import "./Login.css";
 
 const Login = () => {
   const [token, setToken] = useState("")
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/dashboard";
+
+  
 
   useEffect(() => {
     if(token){
@@ -16,6 +20,7 @@ const Login = () => {
     }
   },[navigate, from, token])
   const handleFormSubmit = (event) => {
+    setLoading(true)
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
@@ -38,9 +43,14 @@ const Login = () => {
       setToken(accessToken)
       console.log(data.user)
       console.log('login success')
-      
+      setLoading(false)
     })
   };
+
+  if(loading){
+    return <Loading></Loading>
+  }
+
   return (
     <>
       <Navbar></Navbar>

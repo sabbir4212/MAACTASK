@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import Loading from "../Loading/Loading";
 import Navbar from "../Navbar/Navbar";
 import "./Registration.css";
 
 const Registration = () => {
-  const [token, setToken] = useState("")
+  const [token, setToken] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/dashboard";
 
   useEffect(() => {
-    if(token){
+    if (token) {
       navigate(from, { replace: true });
     }
-  },[navigate, from, token])
+  }, [navigate, from, token]);
 
   const handleFormRegsSubmit = (event) => {
+    setLoading(true);
     event.preventDefault();
     const fullName = event.target.fullName.value;
     const email = event.target.email.value;
@@ -25,6 +28,7 @@ const Registration = () => {
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
     const role = event.target.role.value;
+    const rol2 = event.target.rol2.value;
 
     const createUserDetail = {
       name: fullName,
@@ -34,8 +38,9 @@ const Registration = () => {
       passwordConfirm: confirmPassword,
       role: role,
       phoneNumber: phnNumber,
+      rol2: rol2,
     };
-    console.log(createUserDetail)
+    console.log(createUserDetail);
     fetch('https://staging-api.erpxbd.com/api/v1/users/signup',{
       method: 'POST',
       headers:{
@@ -49,8 +54,12 @@ const Registration = () => {
       console.log(data)
       setToken(data.token)
       console.log('user create successful')
+      setLoading(false)
     })
   };
+  if(loading){
+    return <Loading></Loading>
+  }
 
   return (
     <>
@@ -107,13 +116,11 @@ const Registration = () => {
               id=""
               placeholder="Confirm Password"
             />
-            <input
-              className="registration-inputs mt-4"
-              type="text"
-              name="role"
-              id=""
-              placeholder="Select Your Role"
-            />
+            <select className="registration-inputs" name="role" id="">
+              <option className="py-5 px-3 border-none" value="HUB">
+                HUB
+              </option>
+            </select>
             <div className="flex mt-5 items-center">
               <input className="p-3" type="checkbox" name="checkbox" id="" />
               <p className="ml-2">
@@ -132,7 +139,6 @@ const Registration = () => {
           <p className="text-center my-8">
             Already have an account?{" "}
             <Link className="text-[#0052cc] cursor-pointer" to="/login">
-              {" "}
               Sign in
             </Link>
           </p>
