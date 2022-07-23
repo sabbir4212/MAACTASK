@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const AreaList = () => {
   const [areas, setAreas] = useState([]);
   useEffect(() => {
-    fetch("https://staging-api.erpxbd.com/api/v1/area/All/5/1?name=BARGUNA", {
+    fetch("https://staging-api.erpxbd.com/api/v1/area/All/5/1", {
       method: "GET",
       headers: {
         "content-type": "application/json",

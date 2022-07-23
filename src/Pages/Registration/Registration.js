@@ -28,7 +28,6 @@ const Registration = () => {
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
     const role = event.target.role.value;
-    const rol2 = event.target.rol2.value;
 
     const createUserDetail = {
       name: fullName,
@@ -38,7 +37,6 @@ const Registration = () => {
       passwordConfirm: confirmPassword,
       role: role,
       phoneNumber: phnNumber,
-      rol2: rol2,
     };
     console.log(createUserDetail);
     fetch('https://staging-api.erpxbd.com/api/v1/users/signup',{
