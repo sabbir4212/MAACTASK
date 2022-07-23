@@ -1,18 +1,48 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 import "./Registration.css";
 
 const Registration = () => {
   const handleFormRegsSubmit = (event) => {
     event.preventDefault();
+    const fullName = event.target.fullName.value;
     const email = event.target.email.value;
+    const yourId = event.target.yourId.value;
+    const phnNumber = event.target.phnNumber.value;
     const password = event.target.password.value;
-    console.log("form sobmited", email, password);
+    const confirmPassword = event.target.confirmPassword.value;
+    const role = event.target.role.value;
+
+    const createUserDetail = {
+      name: fullName,
+      email: email,
+      employeeId: yourId,
+      password: password,
+      passwordConfirm: confirmPassword,
+      role: role,
+      phoneNumber: phnNumber,
+    };
+    console.log(createUserDetail)
+    fetch('https://staging-api.erpxbd.com/api/v1/users/signup',{
+      method: 'POST',
+      headers:{
+        'content-type' : 'application/json',
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(createUserDetail)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      console.log('user create successful')
+    })
   };
 
   return (
     <>
+      <Navbar></Navbar>
       <div className="registration-banner grid items-center justify-center">
         <form
           className="registration-form items-center justify-center"
@@ -47,7 +77,7 @@ const Registration = () => {
             <input
               className="registration-inputs mt-4"
               type="text"
-              name="number"
+              name="phnNumber"
               id=""
               placeholder="Your Mobile Number"
             />
@@ -75,7 +105,10 @@ const Registration = () => {
             <div className="flex mt-5 items-center">
               <input className="p-3" type="checkbox" name="checkbox" id="" />
               <p className="ml-2">
-                I read and agree to the <span className="text-[#0052cc] cursor-pointer">Terms & Conditions</span>
+                I read and agree to the{" "}
+                <span className="text-[#0052cc] cursor-pointer">
+                  Terms & Conditions
+                </span>
               </p>
             </div>
           </div>
@@ -86,7 +119,10 @@ const Registration = () => {
           />
           <p className="text-center my-8">
             Already have an account?{" "}
-            <Link className="text-[#0052cc] cursor-pointer" to="/login"> Sign in</Link>
+            <Link className="text-[#0052cc] cursor-pointer" to="/login">
+              {" "}
+              Sign in
+            </Link>
           </p>
         </form>
       </div>

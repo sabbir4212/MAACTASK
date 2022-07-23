@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./AreaList.css";
 import {
   AiFillLeftCircle,
@@ -9,6 +9,22 @@ import underLoadImg from "../../images/undraw_Login_re.png";
 import { Link } from "react-router-dom";
 
 const AreaList = () => {
+  const [areas, setAreas] = useState([]);
+  useEffect(() => {
+    fetch("https://staging-api.erpxbd.com/api/v1/area/All/5/1?name=BARGUNA", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAreas(data);
+        console.log(data)
+      });
+  }, []);
+
   return (
     <div className="region-list">
       <div className="flex items-center justify-between mt-4">
@@ -33,257 +49,49 @@ const AreaList = () => {
         </Link>
       </div>
       <div className="m-5 rounded grid items-center justify-center bg-white py-16 mb-5">
-        {/* <div className="grid">
-                    <img className="mx-auto" src={underLoadImg} alt="" />
-                    <p className="w-3/5 mt-4 mx-auto tracking-wider text-center px-2">
-                        Currently you have no Data. For next step first{" "}
-                        <Link
-                            to={"/dashboard/areacreate"}
-                            className="text-[#0055cc] cursor-pointer"
-                        >
-                            Create Area
-                        </Link>
-                    </p>
-                </div> */}
-        
-        <div className="overflow-y-scroll h-[40vh]">
-        <div class="Table">
-          <div class="Table-row Table-header">
-            <div class="Table-row-item w-14">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48">Sl. No.</div>
-            <div class="Table-row-item w-48">Region</div>
-            <div class="Table-row-item">Area</div>
+        {areas?.area?.length === 0 ? (
+          <div className="grid">
+            <img className="mx-auto" src={underLoadImg} alt="" />
+            <p className="w-3/5 mt-4 mx-auto tracking-wider text-center px-2">
+              Currently you have no Data. For next step first{" "}
+              <Link
+                to={"/dashboard/areacreate"}
+                className="text-[#0055cc] cursor-pointer"
+              >
+                Create Area
+              </Link>
+            </p>
           </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              1
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-            Dhaka
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-            North Dhaka
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-            CTG
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-            South Dhaka
+        ) : (
+          <div className="overflow-y-scroll h-[40vh]">
+            <div className="Table">
+              <div className="Table-row Table-header">
+                <div className="Table-row-item w-14">
+                  <input type="checkbox" name="" id="" />
+                </div>
+                <div className="Table-row-item w-48">Sl. No.</div>
+                <div className="Table-row-item w-48">Region</div>
+                <div className="Table-row-item">Area</div>
+              </div>
+              {areas.area.map((area, index) => (
+                <div key={area._id} className="Table-row">
+                  <div className="Table-row-item w-14" data-header="Header1">
+                    <input type="checkbox" name="" id="" />
+                  </div>
+                  <div className="Table-row-item w-48" data-header="Header2">
+                    {index + 1}
+                  </div>
+                  <div className="Table-row-item w-48" data-header="Header3">
+                    Dhaka
+                  </div>
+                  <div className="Table-row-item" data-header="Header4">
+                    North Dhaka
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              3
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-            Dhaka
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-            North Dhaka
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              row4 col2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-              row4 col3
-            </div>
-            <div class="Table-row-item" data-header="Header4">
-              row4 col4
-            </div>
-          </div>
-        </div>
-        </div>
-
-
+        )}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./RegionList.css";
 import {
   AiFillLeftCircle,
@@ -9,6 +9,21 @@ import underLoadImg from "../../images/undraw_Login_re.png";
 import { Link } from "react-router-dom";
 
 const RegionList = () => {
+  const [regions, setRegions] = useState([]);
+  useEffect(() => {
+    fetch("https://staging-api.erpxbd.com/api/v1/region/20/1", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setRegions(data.region);
+      });
+  }, []);
+
   return (
     <div className="region-list">
       <div className="flex items-center justify-between mt-4">
@@ -46,52 +61,30 @@ const RegionList = () => {
           </p>
         </div> */}
 
-
-<div className="overflow-y-scroll h-[40vh]">
-        <div class="Table">
-          <div class="Table-row Table-header">
-            <div class="Table-row-item w-14">
-              <input type="checkbox" name="" id="" />
+        <div className="overflow-y-scroll h-[40vh]">
+          <div className="Table">
+            <div className="Table-row Table-header">
+              <div className="Table-row-item w-14">
+                <input type="checkbox" name="" id="" />
+              </div>
+              <div className="Table-row-item w-48">Sl. No.</div>
+              <div className="Table-row-item w-48">Region</div>
             </div>
-            <div class="Table-row-item w-48">Sl. No.</div>
-            <div class="Table-row-item w-48">Region</div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              1
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-            Dhaka
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              2
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-            CTG
-            </div>
-          </div>
-          <div class="Table-row">
-            <div class="Table-row-item w-14" data-header="Header1">
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="Table-row-item w-48" data-header="Header2">
-              3
-            </div>
-            <div class="Table-row-item w-48" data-header="Header3">
-            Dhaka
-            </div>
+            {regions?.map((region, index) => (
+              <div key={region._id} className="Table-row">
+                <div className="Table-row-item w-14" data-header="Header1">
+                  <input type="checkbox" name="" id="" />
+                </div>
+                <div className="Table-row-item w-48" data-header="Header2">
+                  {index + 1}
+                </div>
+                <div className="Table-row-item w-48" data-header="Header3">
+                  {region.name}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        </div>
-
       </div>
     </div>
   );
