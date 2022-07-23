@@ -1,10 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import "./Registration.css";
 
 const Registration = () => {
+  const [token, setToken] = useState("")
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/dashboard";
+
+  useEffect(() => {
+    if(token){
+      navigate(from, { replace: true });
+    }
+  },[navigate, from, token])
+
   const handleFormRegsSubmit = (event) => {
     event.preventDefault();
     const fullName = event.target.fullName.value;
@@ -36,6 +47,7 @@ const Registration = () => {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      setToken(data.token)
       console.log('user create successful')
     })
   };

@@ -7,6 +7,7 @@ const DashboardHeader = () => {
         <div className='dashboard-header flex items-center justify-between px-12 mt-2 bg-white'>
             <img src={fieldImg} alt="" />
         </div>
+        
     );
 };
 

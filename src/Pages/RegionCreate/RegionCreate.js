@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './RegionCreate.css';
 import { AiFillLeftCircle, AiOutlineDoubleRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
@@ -31,7 +31,7 @@ const RegionCreate = () => {
           <button className="text-2xl cursor-pointer">
             <AiFillLeftCircle className="back-icon"></AiFillLeftCircle>
           </button>
-          <h1 className="text-xl font-bold ml-5">Create Area</h1>
+          <h1 className="text-xl font-bold ml-5">Create Region</h1>
           <p className="text-sm ml-5 mt-2 flex items-center font-bold">
             <span>Geo </span>
             <span className="mx-2">

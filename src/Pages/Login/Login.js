@@ -1,10 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import "./Login.css";
 
 const Login = () => {
+  const [token, setToken] = useState("")
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/dashboard";
+
+  useEffect(() => {
+    if(token){
+      navigate(from, { replace: true });
+    }
+  },[navigate, from, token])
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -24,7 +34,8 @@ const Login = () => {
     .then(res => res.json())
     .then(data => {
       const accessToken = data.token;
-      localStorage.setItem('accessToken', accessToken)
+      localStorage.setItem('accessToken', accessToken);
+      setToken(accessToken)
       console.log(data.user)
       console.log('login success')
       
