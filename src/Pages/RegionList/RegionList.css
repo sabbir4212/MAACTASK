@@ -37,4 +37,18 @@
       content: none;
     }
   }
+
   
+.serch-div{
+  border: 1.5px solid #000;
+  border-radius: 25px;
+  padding: 5px 5px;
+  width: 220px;
+}
+.serch-input{
+  border: none;
+  border-radius: 5px;
+}
+.serch-input:focus{
+  outline: none;
+}

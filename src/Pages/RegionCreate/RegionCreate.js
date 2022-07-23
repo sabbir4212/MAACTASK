@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './RegionCreate.css';
 import { AiFillLeftCircle, AiOutlineDoubleRight } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 const RegionCreate = () => {
     const handleCreateArea = (event) => {
         event.preventDefault();
-        console.log(event.target.regionToAddRegion.value)
-        console.log(event.target.areaToAddRegion.value)
+        const region = event.target.regionToAddRegion.value;
+        const regional = {
+          name: region
+        }
+          fetch('https://staging-api.erpxbd.com/api/v1/region',{
+            method:'POST',
+            headers:{
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(regional)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            console.log('add region success')
+          })
       };
     return (
         <div className="region-list">
@@ -21,7 +37,7 @@ const RegionCreate = () => {
             <span className="mx-2">
               <AiOutlineDoubleRight></AiOutlineDoubleRight>
             </span>
-            <span>Geo List</span>
+            <Link to={"/dashboard"} className="cursor-pointer">Geo List</Link>
             <span className="mx-2">
               <AiOutlineDoubleRight></AiOutlineDoubleRight>
             </span>

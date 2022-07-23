@@ -47,7 +47,7 @@ const Login = () => {
               className="login-inputs"
               type="text"
               name="email"
-              placeholder="Enter Your Email"
+              placeholder="Enter Your ID"
             />
             <input
               className="login-inputs mt-4"
